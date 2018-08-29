@@ -30,6 +30,11 @@ class BulkUpdater
         $this->databaseName = $databaseName;
     }
 
+    public function setAllOrNothing($allOrNothing)
+    {
+        $this->data['all_or_nothing'] = (bool) $allOrNothing;
+    }
+
     public function updateDocument($data)
     {
         $this->data['docs'][] = $data;
