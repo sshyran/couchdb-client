@@ -394,19 +394,19 @@ class CouchDBClientTest extends \Doctrine\Tests\CouchDB\CouchDBFunctionalTestCas
 
         $response = $client->findDocuments($ids);
 
-        $this->assertEquals(['total_rows' => 3, 'rows' => $expectedRows], $response->body);
+        $this->assertEquals(['total_rows' => 3, 'rows' => $expectedRows, 'offset' => null], $response->body);
 
         $response = $client->findDocuments($ids, 0);
-        $this->assertEquals(['total_rows' => 3, 'rows' => $expectedRows], $response->body);
+        $this->assertEquals(['total_rows' => 3, 'rows' => $expectedRows, 'offset' => null], $response->body);
 
         $response = $client->findDocuments($ids, 1);
-        $this->assertEquals(['total_rows' => 3, 'rows' => [$expectedRows[0]]], $response->body);
+        $this->assertEquals(['total_rows' => 3, 'rows' => [$expectedRows[0]], 'offset' => null], $response->body);
 
         $response = $client->findDocuments($ids, 0, 2);
-        $this->assertEquals(['total_rows' => 3, 'rows' => [$expectedRows[2]]], $response->body);
+        $this->assertEquals(['total_rows' => 3, 'rows' => [$expectedRows[2]], 'offset' => null], $response->body);
 
         $response = $client->findDocuments($ids, 1, 1);
-        $this->assertEquals(['total_rows' => 3, 'rows' => [$expectedRows[1]]], $response->body);
+        $this->assertEquals(['total_rows' => 3, 'rows' => [$expectedRows[1]], 'offset' => null], $response->body);
     }
 
     public function testAllDocs()
