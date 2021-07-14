@@ -130,6 +130,9 @@ class CouchDBClient
             $options['timeout'],
             $options['headers']
         );
+
+        $connection = new HTTP\Tideways($connection);
+
         if ($options['logging'] === true) {
             $connection = new HTTP\LoggingClient($connection);
         }
